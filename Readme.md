@@ -18,6 +18,12 @@ The project deploys YOLOv5 model, which has been trained on your custom dataset.
      
 4. Copy the converted Model file in the `model` folder and rename it as `yolov5s.onnx` (feel free to change the name, also edit in the main script)
 
+**PS**: Please match the below global variables to your desired names for model and classes:
+```
+CLASS_NAMES = "model/coco.names"
+MODEL = "model/yolov5s.onnx" 
+```
+
 5. Build and tag the docker image using:
 `docker build -t od-api .`
 
