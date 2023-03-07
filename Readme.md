@@ -30,6 +30,12 @@ MODEL = "model/yolov5s.onnx"
 6. After sucessfull building, run the docker using:
 `docker run -ti --rm -p 5000:5000 od-api`
 
+### [OR] Use Docker compose
+Skip step 5 & 6 and use docker compose to build & run the images
+
+Build & Run:  `docker compose up -d`
+
+Stop the docker: `docker compose down`
 
 #### Endpoint `/detect/`
 
