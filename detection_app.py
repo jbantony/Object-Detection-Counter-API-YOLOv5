@@ -44,6 +44,7 @@ async def image_preprocess(img):
 async def detect_object(img, net):
     
     img_copy = img
+    height_org, width_org, chanel_org = img.shape 
 
     img_mod = await image_preprocess(img_copy)
     # TODO: Recheck the need of this resize
@@ -58,17 +59,6 @@ async def detect_object(img, net):
     classes = []
     with open(CLASS_NAMES, 'r') as f:
         classes = [line.strip() for line in f.readlines()]
-    #print(classes)
-
-    #layer_names= net.getLayerNames()
-    #print(layer_names)
-    #output_layers = [layer_names[i - 1] for i in net.getUnconnectedOutLayers()]
-    #print(output_layers)
-
-    #preds = net.forward(output_layers)
-    #print(preds)
-    #print(preds[0].shape)
-
     class_ids = []
     confidences = []
     boxes = []
@@ -76,7 +66,7 @@ async def detect_object(img, net):
     output_data = preds[0]
     rows = output_data.shape[0]
 
-    image_width, image_height, _ = img.shape
+    image_width, image_height, _ = img_mod.shape
     # TODO: recheck the boxes dimension adanist image
 
     x_factor = image_width/INPUT_WIDTH
@@ -116,7 +106,7 @@ async def detect_object(img, net):
             ordered_classes['confidence'].append(confidence_label)
             object_count[str(label)] +=1
 
-    return({"detected objects":ordered_classes, "counts":object_count, "image height":image_height, "image width": image_width})
+    return({"detected objects":ordered_classes, "counts":object_count, "image height":height_org, "image width": width_org})
 
 
 app = FastAPI()
