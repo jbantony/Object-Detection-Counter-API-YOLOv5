@@ -1,11 +1,11 @@
 version: '3.3'
 
 services:
-    od-api:
+    od-yolo-api:
         build: 
           context: .
           dockerfile: Dockerfile
         ports:
             - '5000:5000'
-        image: od-api
-        container_name: od-api-qs4paul
+        image: od-yolo-api
+        container_name: od-api-yolov5
