@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: od-app-dep
+  labels: 
+    app: od-app
+spec:
+  selector:
+    matchLabels:
+      app: od-app
+  template:
+    metadata:
+      labels:
+        app: od-app
+    spec:
+      containers:
+      - name: od-yolov5-app
+        image: od-yolo-api
+        imagePullPolicy: Never
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: od-app-serv
+spec:
+  selector:
+    app: od-app
+  type: LoadBalancer
+  ports:
+  - port: 5000
+    targetPort: 5000
+    nodePort: 30005
