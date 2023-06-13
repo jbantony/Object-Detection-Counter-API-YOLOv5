@@ -14,7 +14,7 @@ The project deploys YOLOv5 model, which has been trained on your custom dataset.
 1. After cloning this reposistory, get your trained model file using the above mentioned link.
 2. Replace the contents in the `model/coco.names` file with your custom classes and indexes
 3. Convert the downloaded model (from step 1) to the ONNX format using the official script
-     Follow this Colab for [more information on conversion to ONNX](https://github.com/jbantony/yolov5-custom-training-tutorial/blob/1ddd26ead95f68f74f04e0efb5474602fbc1f229/Convert_YOLOv5_ONNX_for_Inference.ipynb)
+     Follow this [PyTorch to ONNX Repo](https://github.com/jbantony/yolov5-custom-training-tutorial/tree/main) this [Colab](https://colab.research.google.com/github/jbantony/yolov5-custom-training-tutorial/blob/main/Convert_YOLOv5_ONNX_for_Inference.ipynb)
      
 4. Copy the converted Model file in the `model` folder and rename it as `yolov5s.onnx` (feel free to change the name, also edit in the main script)
 
